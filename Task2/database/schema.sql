@@ -1,0 +1,6 @@
+CREATE DATABASE IF NOT EXISTS sms_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE sms_db;
+CREATE TABLE IF NOT EXISTS admins (id BIGINT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(60) NOT NULL UNIQUE, password_hash VARCHAR(100) NOT NULL);
+CREATE TABLE IF NOT EXISTS courses (id BIGINT PRIMARY KEY AUTO_INCREMENT, code VARCHAR(20) NOT NULL UNIQUE, name VARCHAR(120) NOT NULL);
+CREATE TABLE IF NOT EXISTS students (id BIGINT PRIMARY KEY AUTO_INCREMENT, enrollment_no VARCHAR(30) NOT NULL UNIQUE, full_name VARCHAR(120) NOT NULL, email VARCHAR(160) NOT NULL UNIQUE, course_id BIGINT NOT NULL, CONSTRAINT fk_student_course FOREIGN KEY (course_id) REFERENCES courses(id));
+INSERT IGNORE INTO courses(code,name) VALUES ('CSE','Computer Science and Engineering'),('IT','Information Technology'),('ECE','Electronics and Communication');
