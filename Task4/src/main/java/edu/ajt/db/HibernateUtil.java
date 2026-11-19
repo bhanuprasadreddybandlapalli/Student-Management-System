@@ -12,7 +12,7 @@ public final class HibernateUtil {
   return new Configuration().setProperty("hibernate.connection.driver_class","com.mysql.cj.jdbc.Driver")
    .setProperty("hibernate.connection.url",url).setProperty("hibernate.connection.username",user)
    .setProperty("hibernate.connection.password",pass).setProperty("hibernate.dialect","org.hibernate.dialect.MySQL8Dialect")
-   .setProperty("hibernate.hbm2ddl.auto","validate").setProperty("hibernate.show_sql","false")
+   .setProperty("hibernate.hbm2ddl.auto","update").setProperty("hibernate.show_sql","false")
    .addAnnotatedClass(Student.class).addAnnotatedClass(Course.class).addAnnotatedClass(Admin.class).buildSessionFactory();
  }
  public static SessionFactory get(){return FACTORY;}
